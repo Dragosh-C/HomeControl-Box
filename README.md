@@ -1,6 +1,6 @@
 # 🏠 HomeControl Box – Smart Home Automation System
 
-**HomeControl Box** is a modular, extensible smart home system designed for monitoring and control of a house using a [mobile application](https://github.com/Dragosh-C/Smart-Home-App) and a set of interconnected IoT devices. Developed with a focus on personalization, automation, and real-time responsiveness, the system integrates sensors, actuators, cameras, and smart locks through a centralized hub and a Kotlin-based Android app.
+**HomeControl Box** is a modular, extensible smart home system designed for monitoring and control of a house using a mobile application and a set of interconnected IoT devices. Developed with a focus on personalization, automation, and real-time responsiveness, the system integrates sensors, actuators, cameras, and smart locks through a centralized hub and a Kotlin-based [Android app](https://github.com/Dragosh-C/Smart-Home-App).
 
 ---
 
