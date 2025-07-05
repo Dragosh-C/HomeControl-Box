@@ -1,6 +1,6 @@
 # 🏠 HomeControl Box – Smart Home Automation System
 
-**HomeControl Box** is a modular, extensible smart home system designed for intelligent monitoring and control of a house using a mobile application and a set of interconnected IoT devices. Developed with a focus on personalization, automation, and real-time responsiveness, the system integrates sensors, actuators, cameras, and smart locks through a centralized hub and a Kotlin-based Android app.
+**HomeControl Box** is a modular, extensible smart home system designed for monitoring and control of a house using a mobile application and a set of interconnected IoT devices. Developed with a focus on personalization, automation, and real-time responsiveness, the system integrates sensors, actuators, cameras, and smart locks through a centralized hub and a Kotlin-based Android app.
 
 ---
 
@@ -17,8 +17,8 @@
   - Based on sensor data
   - Based on user location or context
   - Time-based and adaptive wake-up alarms
-- 🕹️ **IR Remote Control Support** Control light and devices using remote
-- 👏 **Clap Detection Automation** Control light and devices
+- 🕹️ **IR Remote Control Support** Control lights and devices using remote
+- 👏 **Clap Detection Automation** Control lights and devices
 - 🚨 **Intrusion Detection:** Using hall effect sensors on doors/windows
 - 📳 **Push Notifications:** Alert on poor air quality, gas leak, intrusions, water leak etc.
 - 📊 **Visual Statistics:** Graphs for data by day/week/month/year
@@ -89,17 +89,15 @@ The system includes the following core components:
    ```bash
    git clone --recursive https://github.com/espressif/esp-idf.git
    cd esp-idf
-2.** Install dependencies and toolchain:**
+2.**Install dependencies and toolchain:**
 
-  ./install.sh
+    ./install.sh
 
 3. **Set up environment:**
 
-  ./export.sh
+    ./export.sh
 
-4. **Build and flash**
-   Move to the project directory
-
+4. **Build and flash**: for each device individually
   idf.py build
   idf.py -p /dev/ttyACM0 flash 
 
