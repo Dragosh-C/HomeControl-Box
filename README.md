@@ -1,6 +1,6 @@
 # 🏠 HomeControl Box – Smart Home Automation System
 
-**HomeControl Box** is a modular, extensible smart home system designed for monitoring and control of a house using a mobile application and a set of interconnected IoT devices. Developed with a focus on personalization, automation, and real-time responsiveness, the system integrates sensors, actuators, cameras, and smart locks through a centralized hub and a Kotlin-based Android app.
+**HomeControl Box** is a modular, extensible smart home system designed for monitoring and control of a house using a [mobile application](https://github.com/Dragosh-C/Smart-Home-App) and a set of interconnected IoT devices. Developed with a focus on personalization, automation, and real-time responsiveness, the system integrates sensors, actuators, cameras, and smart locks through a centralized hub and a Kotlin-based Android app.
 
 ---
 
@@ -85,22 +85,25 @@ The system includes the following core components:
 - Firebase project set up (Realtime DB, Firestore, Authentication)
 
 ### Steps
+
 1. **Clone ESP-IDF:**
    ```bash
    git clone --recursive https://github.com/espressif/esp-idf.git
    cd esp-idf
-2.**Install dependencies and toolchain:**
+   ```
+2. **Install dependencies and toolchain:**
 
-    ./install.sh
+       ./install.sh
 
 3. **Set up environment:**
 
-    ./export.sh
+        ./export.sh
 
 4. **Build and flash**: for each device individually
-  idf.py build
-  idf.py -p /dev/ttyACM0 flash 
-
+   ```bash
+      idf.py build
+      idf.py -p /dev/ttyACM0 flash 
+   ```
 
 ## Firmware components 
 
