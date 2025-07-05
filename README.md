@@ -28,9 +28,13 @@
 
 ## 🧱 System Architecture
 
+![System Architecture](architecture.png)
+
+
 The system includes the following core components:
 
 ### 📱 Android Mobile App
+### Link to the app repo:  https://github.com/Dragosh-C/Smart-Home-App
 - Developed using **Kotlin** and **XML**
 - Interfaces with Firebase for data sync and authentication
 - Provides a graphical dashboard, control panel, and automation manager
@@ -51,6 +55,10 @@ The system includes the following core components:
   - Microphone (for clap detection)
   - Relay modules, IR transmitter, LEDs, and servos
 - Housed in **heat-resistant enclosures** for safety
+
+**Diagram for main Box:**
+
+![System Architecture](main_box_diagram.png)
 
 ### 🔗 Communication Protocols
 - **MQTT**: Lightweight, low-latency messaging between hub and devices
@@ -77,4 +85,35 @@ The system includes the following core components:
 - Firebase project set up (Realtime DB, Firestore, Authentication)
 
 ### Steps
+1. **Clone ESP-IDF:**
+   ```bash
+   git clone --recursive https://github.com/espressif/esp-idf.git
+   cd esp-idf
+2.** Install dependencies and toolchain:**
+
+  ./install.sh
+
+3. **Set up environment:**
+
+  ./export.sh
+
+4. **Build and flash**
+   Move to the project directory
+
+  idf.py build
+  idf.py -p /dev/ttyACM0 flash 
+
+
+## Firmware components 
+
+| Folder              | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| `main_box/`         | Device for monitoring power usage and control    |
+| `rpi_hub/`          | Contain code for hub                             |
+| `camerabox/`        | ESP32-CAM module for live video                  |
+| `lock-system/`      | Door lock device                                 |
+| `sensors_box_type/` | Device for monitor environment                   |
+| `smart_outlet/`     | Controllable outlet unit                         |
+
+
 
