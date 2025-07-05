@@ -23,6 +23,9 @@ extern const gpio_num_t row_pins[NUM_ROWS];
 extern const gpio_num_t col_pins[NUM_COLS];
 extern const char keymap[NUM_ROWS][NUM_COLS];
 
+extern int8_t enable_rfid;
+extern int8_t enable_pin;
+
 
 void hash_password_sha256(const char *input, uint8_t output_hash[32]);
 void print_hash(uint8_t hash[32]);

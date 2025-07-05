@@ -10,6 +10,10 @@ const char keymap[NUM_ROWS][NUM_COLS] = {
     {'7', '8', '9'},
     {'*', '0', '#'}};
 
+int8_t enable_rfid = 1;
+int8_t enable_pin = 1;
+
+
 esp_err_t save_password_hash_to_flash(const uint8_t hash[32])
 {
     nvs_handle_t handle;

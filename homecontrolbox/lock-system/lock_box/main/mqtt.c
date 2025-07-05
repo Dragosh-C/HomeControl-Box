@@ -19,8 +19,9 @@
 #include <sys/param.h>
 #include "mqtt.h"
 #include "rfid_read.h"
+#include "utils.h"
 
-#define BROKER_URI "mqtts://192.168.0.101:8883?clientId=esp32_main_box_1000"
+#define BROKER_URI "mqtts://192.168.0.101:8883?clientId=esp32_lock"
 
 #if CONFIG_BROKER_CERTIFICATE_OVERRIDDEN == 1
 static const uint8_t mqtt_ssl_start[]  = "-----BEGIN CERTIFICATE-----\n" CONFIG_BROKER_CERTIFICATE_OVERRIDE "\n-----END CERTIFICATE-----";
@@ -43,7 +44,7 @@ esp_mqtt_client_handle_t client;
  */
 static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
-    ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%" PRIi32, base, event_id);
+    // ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%" PRIi32, base, event_id);
     esp_mqtt_event_handle_t event = event_data;
     esp_mqtt_client_handle_t client = event->client;
     int msg_id;
@@ -91,6 +92,39 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
                 doors_locked = 1;
             } else {
                 doors_locked = 0;
+            }
+        }
+
+        if (strncmp (event->topic, "box_id/4123/password", 20) == 0) {
+            // save new password in flash
+            if (event->data_len < 6) {
+                ESP_LOGE(TAG, "Password too short");
+                return;
+            }
+            uint8_t output_hash[32];
+            //convert event->data to a string
+            char new_password[7] = {0};
+            strncpy(new_password, event->data, 6);
+            hash_password_sha256(new_password, output_hash);
+            save_password_hash_to_flash(output_hash);
+            ESP_LOGI(TAG, "New password saved to flash");
+            // reboot the device to apply the new password
+            esp_restart();
+        }
+
+        if (strncmp (event->topic, "box_id/4123/enable_pin", 22) == 0) {
+            if (strncmp (event->data, "true", 4) == 0) {
+                enable_pin = 1;
+            } else {
+                enable_pin = 0;
+            }
+        }
+
+        if (strncmp (event->topic, "box_id/4123/enable_rfid", 23) == 0) {
+            if (strncmp (event->data, "true", 4) == 0) {
+                enable_rfid = 1;
+            } else {
+                enable_rfid = 0;
             }
         }
    

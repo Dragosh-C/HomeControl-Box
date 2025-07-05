@@ -7,6 +7,8 @@
 #include "rc522_picc.h"
 
 extern int8_t doors_locked; // Global variable to track door lock state
+extern int8_t add_rfid;
+extern int8_t delete_rfid;
 
 static const char *TAG = "lock_4123_mqtt";
 
